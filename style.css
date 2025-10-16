@@ -1,0 +1,170 @@
+/* General styles for the page body */
+        body {
+            background-color: #f8f8f8;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+            overflow: hidden;
+        }
+
+        /* Main container to align elements */
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 1200px;
+            padding: 2rem;
+            gap: 5rem;
+        }
+
+        /* Left text section */
+        .text-content {
+            flex-basis: 40%;
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+
+        .text-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: #111;
+        }
+
+        .text-content p {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #888;
+        }
+
+        /* Classi di visibilità per gestire desktop/mobile */
+        .mobile-only {
+            display: none;
+        }
+
+        /* Sezione della finestra stile macOS a destra */
+        .window-container {
+            flex-basis: 60%;
+            animation: slideIn 1s ease-in-out forwards;
+        }
+
+        /* Stile della finestra */
+        .macos-window {
+            border-radius: 12px;
+            background-color: #ffffff;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            border: 1px solid #e5e5e5;
+            overflow: hidden;
+        }
+
+        /* Intestazione della finestra con i controlli */
+        .window-header {
+            background-color: #f0f0f0;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .control-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .btn-red { background-color: #ff5f56; }
+        .btn-yellow { background-color: #ffbd2e; }
+        .btn-green { background-color: #27c93f; }
+
+        /* Contenuto della finestra (l'immagine) */
+        .window-content {
+            width: 50vw;
+            height: 66vh;
+        }
+
+        .window-content img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* Animazioni */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(33%); } /* Sposta la finestra in modo che 1/3 sia fuori schermo */
+        }
+
+        /* Media query per la responsività su schermi piccoli */
+        @media (max-width: 900px) {
+
+            body {
+                height: auto; /* Permette al corpo di adattarsi al contenuto */
+                min-height: 100vh; /* Assicura che riempia almeno tutta l'altezza dello schermo */
+                overflow: hidden;
+            }
+
+            .desktop-only {
+                display: none;
+            }
+
+            .mobile-only {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                padding: 2rem;
+                box-sizing: border-box;
+            }
+
+            .container {
+                flex-direction: column; /* Stack elements vertically */
+                text-align: center;
+                gap: 2rem;
+                padding: 1rem
+            }
+
+            .window-container {
+                width: 100%;
+                max-width: 500px;
+                animation: fadeIn 1s ease-in-out; /* Use a fade-in animation on mobile */
+                transform: none !important; /* Reset position for mobile view */
+                flex-basis: auto;
+            }
+            
+            .window-content {
+                width: 100%;
+                height: 75vh; /* Altezza per contenere il testo su mobile */
+                max-height: 500px;
+            }
+
+            .mobile-only h1 {
+                font-size: 2.5rem;
+                color: #111;
+                font-weight: 700;
+                line-height: 1.2;
+                margin-bottom: 1rem;
+            }
+
+            .mobile-only p {
+                font-size: 1rem;
+                color: #888;
+                font-weight: 400;
+            }
+        }
